@@ -5,7 +5,7 @@ import RootRoutes from './routes/root'
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/personal_project_fe">
       <RootRoutes/>
     </BrowserRouter>
   );
