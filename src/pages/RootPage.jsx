@@ -1,13 +1,14 @@
 import { Outlet } from "react-router-dom";
+import Sidebar from "./root/sidebar";
+import "./RootPage.css"
 
 export default function RootPage() {
   return(
-    <>
-      <h1>Root</h1>
-      <p>edit me at <code>./src/pages/RootPage.jsx</code></p>
-      <div>
+    <div className="root-page">
+      <Sidebar />
+      <div className="content">
         <Outlet />
       </div>
-    </>
+    </div>
   )
 }

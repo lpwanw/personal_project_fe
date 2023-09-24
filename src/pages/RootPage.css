@@ -1,0 +1,39 @@
+/* Styles for the RootPage component */
+.root-page {
+  margin-left: 250px; /* Account for the width of the sidebar */
+  padding: 20px; /* Padding around the content */
+  background-color: #fff; /* White background for content */
+  min-height: 100vh; /* Ensure it covers the viewport height */
+}
+
+/* You can customize headers, paragraphs or other elements inside root page */
+.root-page h1,
+.root-page h2,
+.root-page h3 {
+  color: #333; /* Dark headers */
+}
+
+.root-page p {
+  color: #666; /* Slightly lighter text for paragraphs */
+  line-height: 1.6; /* Spacing between lines for readability */
+}
+
+.content {
+  padding: 20px; /* Padding around the content */
+  background-color: #fff; /* White background for content */
+  border-left: 1px solid #ddd; /* Left border to visually separate content from the sidebar */
+  min-height: 100vh; /* Ensure it covers the viewport height */
+}
+
+.content h1,
+.content h2,
+.content h3 {
+  color: #333; /* Dark headers */
+  margin-top: 0; /* Remove top margin for a cleaner look */
+}
+
+.content p {
+  color: #666; /* Slightly lighter text for paragraphs */
+  line-height: 1.6; /* Spacing between lines for readability */
+}
+

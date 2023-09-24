@@ -1,8 +1,8 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import RootPage from '../pages/RootPage';
-import HomePage from "../pages/HomePage";
-import AboutPage from "../pages/AboutPage";
+import HomePage from "../pages/root/HomePage";
+import AboutPage from "../pages/root/AboutPage";
 
 const RootRoutes = () => {
   return (
