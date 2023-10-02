@@ -1,12 +1,12 @@
+import React from 'react';
 import { Outlet } from "react-router-dom";
 import Sidebar from "./root/sidebar";
-import "./RootPage.css"
 
 export default function RootPage() {
   return(
-    <div className="root-page">
+    <div className="flex bg-gray-950 text-slate-50">
       <Sidebar />
-      <div className="content">
+      <div className="container">
         <Outlet />
       </div>
     </div>

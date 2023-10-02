@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.span-with-arrow::before {
+  content: '';
+  position: absolute;
+  left: -5px; /* Arrow width */
+  top: 50%;
+  transform: translateY(-50%);
+  border-style: solid;
+  border-width: 5px 8px 5px 0;
+  border-color: transparent rgb(107 114 128) transparent transparent; /* #1f2937 is gray-800 in Tailwind */
+}
