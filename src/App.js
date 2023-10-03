@@ -4,9 +4,9 @@ import {BrowserRouter} from 'react-router-dom';
 import RootRoutes from './routes/root';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faIcons } from '@fortawesome/free-solid-svg-icons'
-import { faDiscord } from '@fortawesome/free-brands-svg-icons';
+import { faDiscord, faLinkedin, faGithub } from '@fortawesome/free-brands-svg-icons';
 
-library.add(faDiscord, faIcons);
+library.add(faDiscord, faIcons, faLinkedin, faGithub);
 
 function App() {
   return (
