@@ -31,7 +31,7 @@ function Item({ path, text, external = false, children}) {
 
 const Sidebar = () => {
   return (
-    <nav className="h-screen w-20 flex flex-col">
+    <nav className="h-screen w-20 flex flex-col bg-gray-950 border-r border-slate-700 mr-3">
       <div className="flex flex-col justify-center items-center">
         <Item path="/" text="Home">
           <FontAwesomeIcon icon={["fab", "discord"]} className="w-7 h-7"/>

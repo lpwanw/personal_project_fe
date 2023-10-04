@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import {Link} from "react-router-dom";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Carousel} from "react-responsive-carousel";
+import Type from "../../../components/pokemon/Type";
 
 function PokemonItem({pokeName}) {
   const [pokemon, setPokemon] = useState(null);
@@ -16,8 +17,8 @@ function PokemonItem({pokeName}) {
 
   if (!pokemon) return <div>Loading...</div>;
 
-  return <>
-    <div className="flex border rounded-xl">
+  return(
+    <div className="flex border border-slate-500 hover:border-slate-200 rounded-xl p-4">
       <div className="w-1/2">
         <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} showIndicators={false} showArrows={false} showStatus={false}>
           {Object.entries(pokemon.sprites).filter(([key, value]) => { return value}).map(([key, value]) => {
@@ -28,18 +29,16 @@ function PokemonItem({pokeName}) {
       <ul className="grow">
         <li>Name: {pokemon.name}</li>
         <li>
-          Type: {
-          pokemon.types.map(type => { return <span key={type.slot} className="mr-1">{type.type.name}</span>})
-        }
+          {pokemon.types.map(type => { return <Type key={type.slot} className="mr-1" type={type.type.name}></Type>})}
         </li>
         <li>
-          <Link to={`${pokeName}`} className="block w-20 h-10 text-center">
+          <Link to={`${pokeName}`} className="block border rounded text-center mt-6 p-1 hover:bg-slate-700">
             See Detail
           </Link>
         </li>
       </ul>
     </div>
-  </>
+  )
 }
 
 export default function ListPage() {
