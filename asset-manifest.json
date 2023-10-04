@@ -1,15 +1,33 @@
 {
   "files": {
-    "main.css": "/personal_project_fe/static/css/main.48990b4b.css",
-    "main.js": "/personal_project_fe/static/js/main.162039ce.js",
+    "main.css": "/personal_project_fe/static/css/main.3a1af2b0.css",
+    "main.js": "/personal_project_fe/static/js/main.1885aa20.js",
     "static/js/787.8ce5eeac.chunk.js": "/personal_project_fe/static/js/787.8ce5eeac.chunk.js",
+    "static/media/dragon.svg": "/personal_project_fe/static/media/dragon.9d32757b191cbbaea8d4d418ff5d4ed3.svg",
+    "static/media/fire.svg": "/personal_project_fe/static/media/fire.e0bd7fcab2121e7ac1ffbbe09a3ca5dd.svg",
+    "static/media/psychic.svg": "/personal_project_fe/static/media/psychic.67439878eaa68ee726de9944c7ff9757.svg",
+    "static/media/fairy.svg": "/personal_project_fe/static/media/fairy.767c2f5699eb5f1120f19c7a76b41a1a.svg",
+    "static/media/bug.svg": "/personal_project_fe/static/media/bug.204df919b74456c6dc729be0aa67759b.svg",
+    "static/media/rock.svg": "/personal_project_fe/static/media/rock.61a8428da62eeab93746d62969c71989.svg",
+    "static/media/ice.svg": "/personal_project_fe/static/media/ice.cd2f90437e3fe39235a9adca860ce2d2.svg",
+    "static/media/ghost.svg": "/personal_project_fe/static/media/ghost.ddf268314aed78d0524d47aa90e49187.svg",
+    "static/media/flying.svg": "/personal_project_fe/static/media/flying.d17785038a59f3ce2121e423a2ded0f7.svg",
+    "static/media/fighting.svg": "/personal_project_fe/static/media/fighting.f20d1bd24f0cde62bb378b672f0178aa.svg",
+    "static/media/poison.svg": "/personal_project_fe/static/media/poison.43956925ad0376b77c7e3921caa3dc30.svg",
+    "static/media/steel.svg": "/personal_project_fe/static/media/steel.cb91a92a3b5197e2cf61bc66592f42d1.svg",
     "index.html": "/personal_project_fe/index.html",
-    "main.48990b4b.css.map": "/personal_project_fe/static/css/main.48990b4b.css.map",
-    "main.162039ce.js.map": "/personal_project_fe/static/js/main.162039ce.js.map",
+    "static/media/ground.svg": "/personal_project_fe/static/media/ground.e567f4fc3f3422598757977865de57d8.svg",
+    "static/media/dark.svg": "/personal_project_fe/static/media/dark.27fdc7ed2bd3294b9838b1882c20e225.svg",
+    "static/media/water.svg": "/personal_project_fe/static/media/water.b6d13329535e4be9e9b4f8da4694faba.svg",
+    "static/media/electric.svg": "/personal_project_fe/static/media/electric.bc35c5a3faf04b605c00967b94e93693.svg",
+    "static/media/grass.svg": "/personal_project_fe/static/media/grass.e09623e3345d5bf5286f5323dd923c60.svg",
+    "static/media/normal.svg": "/personal_project_fe/static/media/normal.2ba66dd583ebf70eb414a0cfd20a48be.svg",
+    "main.3a1af2b0.css.map": "/personal_project_fe/static/css/main.3a1af2b0.css.map",
+    "main.1885aa20.js.map": "/personal_project_fe/static/js/main.1885aa20.js.map",
     "787.8ce5eeac.chunk.js.map": "/personal_project_fe/static/js/787.8ce5eeac.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.48990b4b.css",
-    "static/js/main.162039ce.js"
+    "static/css/main.3a1af2b0.css",
+    "static/js/main.1885aa20.js"
   ]
 }
