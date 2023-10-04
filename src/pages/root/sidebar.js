@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, useMatch } from 'react-router-dom';
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCircleHalfStroke} from "@fortawesome/free-solid-svg-icons";
 
 
 function Item({ path, text, external = false, children}) {
@@ -42,6 +43,9 @@ const Sidebar = () => {
       <ul className="grow flex flex-col justify-start items-center">
         <li>
           <Item path="/about" text="About" />
+          <Item path="/poke" text="Pokemon">
+            <FontAwesomeIcon icon={faCircleHalfStroke} className="w-7 h-7 -rotate-90"/>
+          </Item>
         </li>
       </ul>
 
