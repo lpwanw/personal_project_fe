@@ -4,7 +4,7 @@ import Sidebar from "./root/sidebar";
 
 export default function RootPage() {
   return(
-    <div className="flex bg-gray-950 text-slate-50">
+    <div className="flex bg-gray-800 text-slate-50">
       <Sidebar />
       <div className="container">
         <Outlet />
