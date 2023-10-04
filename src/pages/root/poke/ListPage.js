@@ -27,7 +27,7 @@ function PokemonItem({pokeName}) {
         </Carousel>
       </div>
       <ul className="grow">
-        <li>Name: {pokemon.name}</li>
+        <li className="flex"><p className="mr-2">Name: </p><p className="first-letter:uppercase">{pokemon.name}</p></li>
         <li>
           {pokemon.types.map(type => { return <Type key={type.slot} className="mr-1" type={type.type.name}></Type>})}
         </li>
