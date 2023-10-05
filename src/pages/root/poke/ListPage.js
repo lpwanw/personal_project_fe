@@ -46,8 +46,8 @@ function PokemonItem({pokeName}) {
 
 export default function ListPage() {
   const [pokemons, setPokemons] = useState(null);
-  const [page, setPage] = useState(1);
-  const [totalPage, setTotalPage] = useState(null);
+  const [page, setPage] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     const limit = 20;
