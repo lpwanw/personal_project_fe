@@ -5,8 +5,7 @@ import {faCircleHalfStroke} from "@fortawesome/free-solid-svg-icons";
 
 
 function Item({ path, text, external = false, children}) {
-  const match = useMatch(path);
-
+  const match = useMatch(`${path}/*`);
   return <div className="w-12 h-12 mx-2 my-1 rounded-full flex justify-center items-center bg-gray-725
                          hover:rounded-xl hover:bg-gray-500 hover:text-slate-50
                          transition-all transform

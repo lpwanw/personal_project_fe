@@ -68,7 +68,8 @@ export default function Type({type}) {
 
   return (
     <div className="group relative inline">
-      <TypeSVG className={`inline h-7 w-7 mx-2 `} style={{fill: color}}/>
+      <TypeSVG className={`peer inline h-7 w-7 mx-2`} style={{fill: color}}/>
+      <TypeSVG className={`absolute top-0 left-0 scale-150 mx-2 hidden h-7 w-7 peer-hover:inline peer-hover:animate-ping pointer-events-none`} style={{fill: color}}/>
       <span className="hidden absolute group-hover:inline top-full right-1/2 left-1/2">{type}</span>
     </div>
   );
