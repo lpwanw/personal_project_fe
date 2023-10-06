@@ -1,9 +1,10 @@
 {
   "files": {
-    "main.css": "/personal_project_fe/static/css/main.44a9c68c.css",
-    "main.js": "/personal_project_fe/static/js/main.b94c8759.js",
+    "main.css": "/personal_project_fe/static/css/main.d1f1104d.css",
+    "main.js": "/personal_project_fe/static/js/main.19183a4f.js",
     "static/js/787.8ce5eeac.chunk.js": "/personal_project_fe/static/js/787.8ce5eeac.chunk.js",
     "static/media/dragon.svg": "/personal_project_fe/static/media/dragon.46295ffe90df6082f6ba0aac6ba683b5.svg",
+    "static/media/rails.svg": "/personal_project_fe/static/media/rails.d3a3d2be9c71b5145021f42d09588ae6.svg",
     "static/media/fire.svg": "/personal_project_fe/static/media/fire.a8b2dd152e878bb58407ce087e7e8679.svg",
     "static/media/psychic.svg": "/personal_project_fe/static/media/psychic.d6f2e88fe06f5974c15ce01f3d890620.svg",
     "static/media/fairy.svg": "/personal_project_fe/static/media/fairy.df56585356b04828bc2fdfb247290a8f.svg",
@@ -14,6 +15,7 @@
     "static/media/fighting.svg": "/personal_project_fe/static/media/fighting.05ab6a0921f2a485f0d07d15318236cc.svg",
     "static/media/ice.svg": "/personal_project_fe/static/media/ice.899a052c219da74124c17cae3434d263.svg",
     "static/media/poison.svg": "/personal_project_fe/static/media/poison.fc2b70901a405ddabb8e018b84f3e4af.svg",
+    "static/media/tailwind.svg": "/personal_project_fe/static/media/tailwind.79614a5f61617ba49a0891494521226b.svg",
     "index.html": "/personal_project_fe/index.html",
     "static/media/steel.svg": "/personal_project_fe/static/media/steel.1ceeb50ac92d79f5d86b08882651a8f0.svg",
     "static/media/ground.svg": "/personal_project_fe/static/media/ground.6c70c29cb8e992f764022db84569cc82.svg",
@@ -22,12 +24,12 @@
     "static/media/electric.svg": "/personal_project_fe/static/media/electric.eea4c6126bb43bc9d5940e5cb4f72003.svg",
     "static/media/grass.svg": "/personal_project_fe/static/media/grass.b3a7f803931a34a7b1fbcf4016ad0065.svg",
     "static/media/normal.svg": "/personal_project_fe/static/media/normal.2fb64c8bbea1eb9fd339d8584795ab9f.svg",
-    "main.44a9c68c.css.map": "/personal_project_fe/static/css/main.44a9c68c.css.map",
-    "main.b94c8759.js.map": "/personal_project_fe/static/js/main.b94c8759.js.map",
+    "main.d1f1104d.css.map": "/personal_project_fe/static/css/main.d1f1104d.css.map",
+    "main.19183a4f.js.map": "/personal_project_fe/static/js/main.19183a4f.js.map",
     "787.8ce5eeac.chunk.js.map": "/personal_project_fe/static/js/787.8ce5eeac.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.44a9c68c.css",
-    "static/js/main.b94c8759.js"
+    "static/css/main.d1f1104d.css",
+    "static/js/main.19183a4f.js"
   ]
 }
