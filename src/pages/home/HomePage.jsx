@@ -1,22 +1,24 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import {motion} from "framer-motion"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGithubAlt, faLinkedinIn, faReact} from "@fortawesome/free-brands-svg-icons";
 import {Link} from "react-router-dom";
-import {faDatabase, faFire, faGem, faTableColumns} from "@fortawesome/free-solid-svg-icons";
+import {faDatabase, faFire, faGem, faMoon, faSun, faTableColumns} from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as RailsSVG } from "../../assets/svg/rails.svg";
 import { ReactComponent as TailwindSVG } from "../../assets/svg/tailwind.svg";
 import sunLogo from "../../assets/logo-sun.png"
+import {Carousel} from "react-responsive-carousel";
 
 function BasicInfo() {
   return(
-    <div className={`flex flex-col items-center w-full`}>
-      <div className={`flex flex-col items-center`}>
+    <div className={`flex flex-col md:flex-row justify-between items-center w-full sm:col-span-2`}>
+      <div className={`flex flex-col md:flex-row items-center`}>
         <img
           src="https://yt3.googleusercontent.com/-CFTJHU7fEWb7BYEb6Jh9gm1EpetvVGQqtof0Rbh-VQRIznYYKJxCaqv_9HeBcmJmIsp2vOO9JU=s900-c-k-c0x00ffffff-no-rj"
           alt="logo"
           className={`h-14 w-14`}
         />
-        <div className={`flex flex-col items-center `}>
+        <div className={`flex flex-col items-center md:items-start md:ml-4`}>
           <h1 className={`bold`}>Le Phuong Tay</h1>
           <p>Software Engineering</p>
         </div>
@@ -40,7 +42,7 @@ function BasicInfo() {
 }
 function OverView() {
   return(
-    <div className={`flex flex-col items-center border rounded-xl border-slate-400 p-3`}>
+    <div className={`flex flex-col items-center sm:items-start border rounded-xl border-slate-400 p-3 sm:col-span-2`}>
       <h1 className={`text-sm text-gray-400`}>About Me:</h1>
       <div className={`flex flex-wrap justify-center items-center text-2xl`}>
         <h1 className={`text-gray-400 font-mono`}>{'{{' }</h1>
@@ -49,7 +51,7 @@ function OverView() {
         <h1><FontAwesomeIcon icon={faGem} className={`px-2`}/> Rubyist</h1>
       </div>
       {/*Tech Stack*/}
-      <ul className={`w-full flex gap-2 overflow-x-auto whitespace-nowrap mb-2`}>
+      <ul className={`w-full flex gap-2 overflow-x-auto whitespace-nowrap my-2`}>
         <li className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
           <RailsSVG className={`w-5 h-5 object-cover mx-1`}/>
           Ruby on Rails
@@ -67,7 +69,7 @@ function OverView() {
           SQL Database
         </li>
       </ul>
-      <p className={`text-center`}>
+      <p className={`text-center sm:text-left`}>
         Dedicated Ruby backend developer with over 2 years of experience in crafting scalable applications.
         Eager to leverage technical expertise in a collaborative setting, driving innovation and efficiency.
       </p>
@@ -77,7 +79,7 @@ function OverView() {
 
 function Experience() {
   return (
-    <div className={`border rounded-xl border-slate-400 p-3`}>
+    <div className={`border rounded-xl w-full border-slate-400 p-3 sm:col-span-2`}>
       <h1 className={`font-bold`}>Experience</h1>
       <div className={`flex flex-col items-center mb-2`}>
         <div className={`flex flex-col items-center`}>
@@ -102,30 +104,67 @@ function Experience() {
   )
 }
 
-function Menu() {
+function Menu({dark, toggleDark}) {
   return(
-    <div className={`fixed flex gap-4 border border-slate-700 rounded-xl p-2 bg-gray-200 bottom-5 left-1/2 -translate-x-1/2`}>
+    <div className={`fixed flex gap-4 border border-slate-700 rounded-xl p-2 bg-gray-200 dark:bg-slate-800 bottom-5 left-1/2 -translate-x-1/2 z-50`}>
       <Link to={`/`} className={`flex items-center`}>
-        <FontAwesomeIcon icon={faTableColumns} className={`border h-4 w-4 p-2 rounded-md`}/>
+        <FontAwesomeIcon icon={faTableColumns} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
         <h1>Portfolio</h1>
       </Link>
       <Link to={`/about`} className={`flex items-center`}>
-        <FontAwesomeIcon icon={faFire} className={`border h-4 w-4 p-2 rounded-md ml-2`}/>
+        <FontAwesomeIcon icon={faFire} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md ml-2`}/>
         <h1 className={`whitespace-nowrap`}>Fun stuff</h1>
       </Link>
+      <button onClick={toggleDark} className={`flex items-center`}>
+        <FontAwesomeIcon icon={dark ? faMoon: faSun} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
+      </button>
     </div>
   )
 }
 
-export default function HomePage() {
+function SlideShow() {
   return(
-    <div className={`grid grid-cols-1 p-2 gap-4`}>
-      <Menu />
-      <BasicInfo />
-      <OverView />
-      <Experience />
-      <Experience />
-      <Experience />
+    <motion.div initial={{ translate: `0% 50%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+                transition={{
+                  type: "spring",
+                  bounce: 0.5,
+                  duration: 0.8
+                }}
+                className={`border border-slate-400 rounded-xl max-w-sm mx-auto`}
+    >
+      <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} showIndicators={false} showStatus={false}>
+        <img src="https://stickershop.line-scdn.net/stickershop/v1/product/16175/LINEStorePC/main.png" alt="Doraemon1"/>
+        <img src="https://stickershop.line-scdn.net/stickershop/v1/product/16176/LINEStorePC/main.png" alt="Doraemon2"/>
+      </Carousel>
+    </motion.div>
+  )
+}
+
+export default function HomePage() {
+  const [dark, setDark] = useState(true);
+
+  useEffect(() => {
+// On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (dark && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.documentElement.classList.add('dark')
+    } else {
+      document.documentElement.classList.remove('dark')
+    }
+  }, [dark]);
+
+  return(
+    <div className={`w-full flex justify-center dark:bg-slate-900 dark:text-slate-300 transition-all`}>
+      <div className={`grid grid-cols-1 sm:grid-cols-2  p-2 gap-4 max-w-3xl`}>
+        <Menu dark={dark} toggleDark={() => setDark(!dark)}/>
+        <BasicInfo />
+        <OverView />
+        <Experience />
+        <SlideShow />
+        <SlideShow />
+        <div className={`h-20`}>
+
+        </div>
+      </div>
     </div>
   )
 }
