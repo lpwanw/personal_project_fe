@@ -12,7 +12,7 @@ function PokemonItem({pokeName}) {
 
   useEffect(() => {
     // Fetch individual Pokémon data
-    fetch(`https://pokeapi.co/api/v2/pokemon-form/${pokeName}`)
+    fetch(`https://pokeapi.co/api/v2/pokemon/${pokeName}`)
       .then(response => response.json())
       .then(data => setPokemon(data))
       .catch(err => console.error(err));
@@ -24,7 +24,7 @@ function PokemonItem({pokeName}) {
     <div className="flex border border-slate-500 hover:border-slate-200 rounded-xl p-2">
       <div className="w-1/2">
         <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} showIndicators={false} showArrows={false} showStatus={false}>
-          {Object.entries(pokemon.sprites).filter(([key, value]) => { return value}).map(([key, value]) => {
+          {Object.entries(pokemon.sprites).filter(([key, value]) => { return (typeof value) === "string"}).map(([key, value]) => {
             return <img key={key} src={value} alt={key} className="h-20 object-contain"/>;
           })}
         </Carousel>
