@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {motion} from "framer-motion"
+import {motion, useScroll} from "framer-motion"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGithubAlt, faLinkedinIn, faReact} from "@fortawesome/free-brands-svg-icons";
 import {Link} from "react-router-dom";
@@ -65,7 +65,7 @@ function OverView() {
           Tailwind CSS
         </li>
         <li className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
-          <FontAwesomeIcon icon={faReact} className={`w-5 h-5 object-cover mx-1`}/>
+          <FontAwesomeIcon icon={faReact} className={`w-5 h-5 object-cover mx-1 animate-spin-slow text-[#61DBFB]`}/>
           React
         </li>
         <li className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
@@ -125,19 +125,24 @@ function Experience() {
 }
 
 function Menu({dark, toggleDark}) {
+  const { scrollYProgress } = useScroll();
+
   return(
-    <div className={`fixed flex gap-4 border border-slate-700 rounded-xl p-2 bg-gray-200 dark:bg-slate-800 bottom-5 left-1/2 -translate-x-1/2 z-50`}>
-      <Link to={`/`} className={`flex items-center`}>
-        <FontAwesomeIcon icon={faTableColumns} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
-        <h1>Portfolio</h1>
-      </Link>
-      <Link to={`/about`} className={`flex items-center`}>
-        <FontAwesomeIcon icon={faFire} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md ml-2`}/>
-        <h1 className={`whitespace-nowrap`}>Fun stuff</h1>
-      </Link>
-      <button onClick={toggleDark} className={`flex items-center`}>
-        <FontAwesomeIcon icon={dark ? faMoon: faSun} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
-      </button>
+    <div className={`fixed bottom-5 left-1/2 -translate-x-1/2 z-50 border border-slate-700 rounded-xl p-2 dark:bg-slate-800 bg-gray-200`}>
+      <div className={`flex gap-4`}>
+        <Link to={`/`} className={`flex items-center`}>
+          <FontAwesomeIcon icon={faTableColumns} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
+          <h1>Portfolio</h1>
+        </Link>
+        <Link to={`/about`} className={`flex items-center`}>
+          <FontAwesomeIcon icon={faFire} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md ml-2`}/>
+          <h1 className={`whitespace-nowrap`}>Fun stuff</h1>
+        </Link>
+        <button onClick={toggleDark} className={`flex items-center`}>
+          <FontAwesomeIcon icon={dark ? faMoon: faSun} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
+        </button>
+      </div>
+      <motion.div className={`w-full h-1 bg-amber-400 origin-left rounded`} style={{ scaleX: scrollYProgress }}></motion.div>
     </div>
   )
 }
@@ -170,7 +175,7 @@ function ScrollSlide() {
                 }}
                 className={`flex justify-center w-full border border-slate-400 rounded-xl sm:max-w-sm max-h-sm mx-auto p-2`}
     >
-      <div className={`flex w-full gap-2 overflow-x-hidden`}>
+      <div className={`flex w-full gap-2 overflow-hidden`}>
         <motion.div
           className={`flex gap-2 whitespace-nowrap`}
           initial={{ x: 0 }}
@@ -223,6 +228,34 @@ function ScrollSlide() {
   )
 }
 
+function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <motion.footer initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+                   transition={{
+                     type: "spring",
+                     bounce: 0.5,
+                     duration: 0.8,
+                   }}
+      className="w-full bg-slate-400 dark:bg-slate-800 p-4 mt-4 border-t rounded-xl dark:border-slate-600">
+      <div className="max-w-3xl mx-auto flex justify-between items-center">
+        <div className="text-sm text-slate-200 dark:text-slate-500">
+          © {currentYear} Le Phuong Tay. All rights reserved.
+        </div>
+        <div className="flex gap-4">
+          <a href="https://github.com/lpwanw" target="_blank" rel="noopener noreferrer" className="text-slate-200 dark:text-slate-500 hover:text-slate-100 dark:hover:text-slate-400">
+            <FontAwesomeIcon icon={faGithubAlt} className="h-5" />
+          </a>
+          <a href="https://bit.ly/lpwanw_linkedin" target="_blank" rel="noopener noreferrer" className="text-slate-200 dark:text-slate-500 hover:text-slate-100 dark:hover:text-slate-400">
+            <FontAwesomeIcon icon={faLinkedinIn} className="h-5" />
+          </a>
+        </div>
+      </div>
+    </motion.footer>
+  );
+}
+
 export default function HomePage() {
   const [dark, setDark] = useState(false);
 
@@ -236,7 +269,7 @@ export default function HomePage() {
   }, [dark]);
 
   return(
-    <div className={`w-full flex justify-center dark:bg-slate-900 dark:text-slate-300 transition-all`}>
+    <div className={`w-full flex justify-center dark:bg-slate-900 dark:text-slate-300 transition-all duration-300`}>
       <div className={`grid grid-cols-1 sm:grid-cols-2  p-2 gap-4 max-w-3xl`}>
         <Menu dark={dark} toggleDark={() => setDark(!dark)}/>
         <BasicInfo />
@@ -244,6 +277,7 @@ export default function HomePage() {
         <Experience />
         <SlideShow />
         <ScrollSlide />
+        <Footer />
         <div className={`h-20`}>
         </div>
       </div>
