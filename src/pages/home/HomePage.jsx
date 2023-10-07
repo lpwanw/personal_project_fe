@@ -6,8 +6,10 @@ import {Link} from "react-router-dom";
 import {faDatabase, faFire, faGem, faMoon, faSun, faTableColumns} from "@fortawesome/free-solid-svg-icons";
 import { ReactComponent as RailsSVG } from "../../assets/svg/rails.svg";
 import { ReactComponent as TailwindSVG } from "../../assets/svg/tailwind.svg";
+import { ReactComponent as DockerSVG } from "../../assets/svg/docker.svg";
 import sunLogo from "../../assets/logo-sun.png"
 import sguLogo from "../../assets/sgu.png"
+import mindXLogo from "../../assets/mindx.png"
 import {Carousel} from "react-responsive-carousel";
 
 function BasicInfo() {
@@ -41,6 +43,7 @@ function BasicInfo() {
     </div>
   )
 }
+
 function OverView() {
   return(
     <div className={`flex flex-col items-center sm:items-start border rounded-xl border-slate-400 p-3 sm:col-span-2`}>
@@ -85,6 +88,12 @@ function Experience() {
       position: "Ruby on Rails Developer",
       place: "Sun *",
       timeline: "Dec 2021 - Now"
+    },
+    {
+      img: mindXLogo,
+      position: "Kid Teen Teacher",
+      place: "MindX",
+      timeline: "Teaching programing for kid. Dec 2020 - Now"
     },
     {
       img: sguLogo,
@@ -135,7 +144,7 @@ function Menu({dark, toggleDark}) {
 
 function SlideShow() {
   return(
-    <motion.div initial={{ translate: `0% 50%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+    <motion.div initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
                 transition={{
                   type: "spring",
                   bounce: 0.5,
@@ -147,6 +156,69 @@ function SlideShow() {
         <img src="https://stickershop.line-scdn.net/stickershop/v1/product/16175/LINEStorePC/main.png" alt="Doraemon1"/>
         <img src="https://stickershop.line-scdn.net/stickershop/v1/product/16176/LINEStorePC/main.png" alt="Doraemon2"/>
       </Carousel>
+    </motion.div>
+  )
+}
+
+function ScrollSlide() {
+  return(
+    <motion.div initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+                transition={{
+                  type: "spring",
+                  bounce: 0.5,
+                  duration: 0.8,
+                }}
+                className={`flex justify-center w-full border border-slate-400 rounded-xl sm:max-w-sm max-h-sm mx-auto p-2`}
+    >
+      <div className={`flex w-full gap-2 overflow-x-hidden`}>
+        <motion.div
+          className={`flex gap-2 whitespace-nowrap`}
+          initial={{ x: 0 }}
+          animate={{ x: "-50%" }}
+          transition={{
+            ease: "linear",
+            repeat: Infinity,
+            duration: 20
+          }}
+        >
+          {/* Content 1 */}
+          <div className={`flex gap-2 ml-2`}>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <RailsSVG className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <FontAwesomeIcon icon={faReact} className={`w-52 h-52 object-cover mx-1 text-[#61DBFB] animate-spin-slow`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <FontAwesomeIcon icon={faDatabase} className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <TailwindSVG className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <DockerSVG className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+          </div>
+          {/* Duplicate of Content 1 */}
+          <div className={`flex gap-2`}>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <RailsSVG className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <FontAwesomeIcon icon={faReact} className={`w-52 h-52 object-cover mx-1 text-[#61DBFB] animate-spin-slow`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <FontAwesomeIcon icon={faDatabase} className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <TailwindSVG className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+            <div className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
+              <DockerSVG className={`w-52 h-52 object-cover mx-1`}/>
+            </div>
+          </div>
+        </motion.div>
+      </div>
     </motion.div>
   )
 }
@@ -171,9 +243,8 @@ export default function HomePage() {
         <OverView />
         <Experience />
         <SlideShow />
-        <SlideShow />
+        <ScrollSlide />
         <div className={`h-20`}>
-
         </div>
       </div>
     </div>
