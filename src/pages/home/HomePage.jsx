@@ -238,7 +238,7 @@ function Footer() {
                      bounce: 0.5,
                      duration: 0.8,
                    }}
-      className="w-full bg-slate-400 dark:bg-slate-800 p-4 mt-4 border-t rounded-xl dark:border-slate-600">
+      className="w-full bg-slate-400 dark:bg-slate-800 p-4 mt-4 border-t rounded-xl dark:border-slate-600 sm:col-span-2">
       <div className="max-w-3xl mx-auto flex justify-between items-center">
         <div className="text-sm text-slate-200 dark:text-slate-500">
           © {currentYear} Le Phuong Tay. All rights reserved.
