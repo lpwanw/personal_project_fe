@@ -7,6 +7,7 @@ import {faDatabase, faFire, faGem, faMoon, faSun, faTableColumns} from "@fortawe
 import { ReactComponent as RailsSVG } from "../../assets/svg/rails.svg";
 import { ReactComponent as TailwindSVG } from "../../assets/svg/tailwind.svg";
 import sunLogo from "../../assets/logo-sun.png"
+import sguLogo from "../../assets/sgu.png"
 import {Carousel} from "react-responsive-carousel";
 
 function BasicInfo() {
@@ -78,28 +79,38 @@ function OverView() {
 }
 
 function Experience() {
+  const experiences = [
+    {
+      img: sunLogo,
+      position: "Ruby on Rails Developer",
+      place: "Sun *",
+      timeline: "Dec 2021 - Now"
+    },
+    {
+      img: sguLogo,
+      position: "Degree of Engineer",
+      place: "Sai Gon University",
+      timeline: "GPA: 3.0. 2018 - 2023"
+    }
+  ]
   return (
     <div className={`border rounded-xl w-full border-slate-400 p-3 sm:col-span-2`}>
       <h1 className={`font-bold`}>Experience</h1>
-      <div className={`flex flex-col items-center mb-2`}>
-        <div className={`flex flex-col items-center`}>
-          <img src={sunLogo} alt="logo-sun" className={`w-12`}/>
-          <h1>Ruby on Rails Developer @<span className={`font-bold ml-1`}>Sun *</span></h1>
-        </div>
-        <div>
-          Dec 2021 - Now
-        </div>
-      </div>
-
-      <div className={`flex flex-col items-center`}>
-        <div className={`flex flex-col items-center`}>
-          <img src={sunLogo} alt="logo-sun" className={`w-12`}/>
-          <h1>Ruby on Rails Developer @<span className={`font-bold ml-1`}>Sun *</span></h1>
-        </div>
-        <div>
-          Dec 2021 - Now
-        </div>
-      </div>
+      {
+        experiences.map((experience, index) => {
+          return(
+            <div key={index} className={`flex flex-col sm:flex-row sm:justify-between items-center mt-2 pb-2 sm:border-b-2`}>
+              <div className={`flex flex-col sm:flex-row items-center`}>
+                <img src={experience.img} alt={`logo_${index}`} className={`w-12 mr-3`}/>
+                <h1>{experience.position} @<span className={`font-bold ml-1`}>{experience.place}</span></h1>
+              </div>
+              <div>
+                {experience.timeline}
+              </div>
+            </div>
+          )
+        })
+      }
     </div>
   )
 }
@@ -130,7 +141,7 @@ function SlideShow() {
                   bounce: 0.5,
                   duration: 0.8
                 }}
-                className={`border border-slate-400 rounded-xl max-w-sm mx-auto`}
+                className={`border border-slate-400 rounded-xl sm:max-w-sm mx-auto`}
     >
       <Carousel showThumbs={false} infiniteLoop={true} autoPlay={true} showIndicators={false} showStatus={false}>
         <img src="https://stickershop.line-scdn.net/stickershop/v1/product/16175/LINEStorePC/main.png" alt="Doraemon1"/>
@@ -141,7 +152,7 @@ function SlideShow() {
 }
 
 export default function HomePage() {
-  const [dark, setDark] = useState(true);
+  const [dark, setDark] = useState(false);
 
   useEffect(() => {
 // On page load or when changing themes, best to add inline in `head` to avoid FOUC
