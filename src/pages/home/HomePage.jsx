@@ -276,7 +276,7 @@ function ShapePlayGround() {
           className="absolute bg-white dark:bg-slate-900 opacity-20 w-[150px] h-[150px] rounded-xl"
         />
         <div className={`absolute top-2 left-2 flex justify-center items-center gap-2`}>
-          <div data-ison={isAnimated} className="flex justify-start data-[ison=true]:justify-end data-[ison=true]:bg-blue-700 rounded-xl p-2 cursor-pointer bg-indigo-500 w-16 h-8"
+          <div data-ison={isAnimated} className="flex justify-start border data-[ison=true]:justify-end data-[ison=true]:bg-blue-700 rounded-xl p-2 cursor-pointer bg-indigo-500 w-16 h-8"
                onClick={()=> setIsAnimated(!isAnimated)}
           >
             <motion.div className="h-4 w-4 rounded-3xl bg-white" layout transition={{
