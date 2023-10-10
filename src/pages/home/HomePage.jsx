@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {motion} from "framer-motion"
+import {motion, useScroll} from "framer-motion"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGithubAlt, faLinkedinIn, faReact} from "@fortawesome/free-brands-svg-icons";
 import {Link} from "react-router-dom";
@@ -65,7 +65,7 @@ function OverView() {
           Tailwind CSS
         </li>
         <li className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
-          <FontAwesomeIcon icon={faReact} className={`w-5 h-5 object-cover mx-1`}/>
+          <FontAwesomeIcon icon={faReact} className={`w-5 h-5 object-cover mx-1 animate-spin-slow text-[#61DBFB]`}/>
           React
         </li>
         <li className={`flex justify-center items-center border rounded-xl text-sm p-1 px-2`}>
@@ -125,19 +125,24 @@ function Experience() {
 }
 
 function Menu({dark, toggleDark}) {
+  const { scrollYProgress } = useScroll();
+
   return(
-    <div className={`fixed flex gap-4 border border-slate-700 rounded-xl p-2 bg-gray-200 dark:bg-slate-800 bottom-5 left-1/2 -translate-x-1/2 z-50`}>
-      <Link to={`/`} className={`flex items-center`}>
-        <FontAwesomeIcon icon={faTableColumns} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
-        <h1>Portfolio</h1>
-      </Link>
-      <Link to={`/about`} className={`flex items-center`}>
-        <FontAwesomeIcon icon={faFire} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md ml-2`}/>
-        <h1 className={`whitespace-nowrap`}>Fun stuff</h1>
-      </Link>
-      <button onClick={toggleDark} className={`flex items-center`}>
-        <FontAwesomeIcon icon={dark ? faMoon: faSun} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
-      </button>
+    <div className={`fixed bottom-5 left-1/2 -translate-x-1/2 z-50 border border-slate-700 rounded-xl p-2 dark:bg-slate-800 bg-gray-200`}>
+      <div className={`flex gap-4`}>
+        <Link to={`/`} className={`flex items-center`}>
+          <FontAwesomeIcon icon={faTableColumns} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
+          <h1>Portfolio</h1>
+        </Link>
+        <Link to={`/about`} className={`flex items-center`}>
+          <FontAwesomeIcon icon={faFire} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md ml-2`}/>
+          <h1 className={`whitespace-nowrap`}>Fun stuff</h1>
+        </Link>
+        <button onClick={toggleDark} className={`flex items-center`}>
+          <FontAwesomeIcon icon={dark ? faMoon: faSun} className={`border dark:border-slate-600 h-4 w-4 p-2 rounded-md`}/>
+        </button>
+      </div>
+      <motion.div className={`w-full h-1 bg-amber-400 origin-left rounded`} style={{ scaleX: scrollYProgress }}></motion.div>
     </div>
   )
 }
@@ -170,7 +175,7 @@ function ScrollSlide() {
                 }}
                 className={`flex justify-center w-full border border-slate-400 rounded-xl sm:max-w-sm max-h-sm mx-auto p-2`}
     >
-      <div className={`flex w-full gap-2 overflow-x-hidden`}>
+      <div className={`flex w-full gap-2 overflow-hidden`}>
         <motion.div
           className={`flex gap-2 whitespace-nowrap`}
           initial={{ x: 0 }}
@@ -223,6 +228,145 @@ function ScrollSlide() {
   )
 }
 
+function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  return (
+    <motion.footer initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+                   transition={{
+                     type: "spring",
+                     bounce: 0.5,
+                     duration: 0.8,
+                   }}
+      className="w-full bg-slate-400 dark:bg-slate-800 p-4 mt-4 border-t rounded-xl dark:border-slate-600 sm:col-span-2">
+      <div className="max-w-3xl mx-auto flex justify-between items-center">
+        <div className="text-sm text-slate-200 dark:text-slate-500">
+          © {currentYear} Le Phuong Tay. All rights reserved.
+        </div>
+        <div className="flex gap-4">
+          <a href="https://github.com/lpwanw" target="_blank" rel="noopener noreferrer" className="text-slate-200 dark:text-slate-500 hover:text-slate-100 dark:hover:text-slate-400">
+            <FontAwesomeIcon icon={faGithubAlt} className="h-5" />
+          </a>
+          <a href="https://bit.ly/lpwanw_linkedin" target="_blank" rel="noopener noreferrer" className="text-slate-200 dark:text-slate-500 hover:text-slate-100 dark:hover:text-slate-400">
+            <FontAwesomeIcon icon={faLinkedinIn} className="h-5" />
+          </a>
+        </div>
+      </div>
+    </motion.footer>
+  );
+}
+
+function ShapePlayGround() {
+  const [scale, setScale] = useState(1);
+  const [rotate, setRotate] = useState(0);
+  const [borderRadius, setBorderRadius] = useState(0);
+  const [isAnimated, setIsAnimated] = useState(true);
+
+  return(
+    <>
+      <motion.div initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+                  transition={{
+                    type: "spring",
+                    bounce: 0.5,
+                    duration: 0.8,
+                  }}
+        className={`flex relative justify-center items-center sm:max-w-sm max-h-sm w-full h-64 bg-purple-600 dark:bg-indigo-600 rounded-xl border-slate-400`}>
+
+        <motion.div
+          className="absolute bg-white dark:bg-slate-900 opacity-20 w-[150px] h-[150px] rounded-xl"
+        />
+        <div className={`absolute top-2 left-2 flex justify-center items-center gap-2`}>
+          <div data-ison={isAnimated} className="flex justify-start border data-[ison=true]:justify-end data-[ison=true]:bg-blue-700 rounded-xl p-2 cursor-pointer bg-indigo-500 w-16 h-8"
+               onClick={()=> setIsAnimated(!isAnimated)}
+          >
+            <motion.div className="h-4 w-4 rounded-3xl bg-white" layout transition={{
+              type: "spring",
+              stiffness: 700,
+              damping: 30
+            }} />
+          </div>
+          <label>Animation</label>
+        </div>
+        <motion.div
+          drag
+          dragConstraints={{
+            top: -50,
+            left: -50,
+            right: 50,
+            bottom: 50,
+          }}
+          animate={isAnimated ?
+            {
+              scale: [1, 2, 2, 1, 1],
+              rotate: [0, 0, 270, 270, 0],
+              borderRadius: ["20%", "20%", "50%", "50%", "20%"],
+            } :
+            {
+              scale: scale,
+              rotate: rotate,
+              borderRadius: `${borderRadius}%`
+            }
+          }
+          transition={isAnimated ? {repeat: Infinity, duration: 2} : {}}
+          className={`h-[50px] w-[50px] rotate-0 bg-gray-300 dark:bg-gray-700 rounded-xl z-10`}
+        >
+
+        </motion.div>
+      </motion.div>
+      <motion.div
+        initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+        transition={{
+          type: "spring",
+          bounce: 0.5,
+          duration: 0.8,
+        }}
+        className={`flex text-sm sm:text-md sm:max-w-sm max-h-sm w-full h-64 border rounded-xl p-2 border-slate-400`}>
+        <div className={`flex flex-col w-full justify-center items-center`}>
+          <div className={`flex gap-2`}>
+            <code className={`w-14`}>
+              Scale:
+            </code>
+            <input
+              type="range" min={1} max={2} step={0.1} value={scale}
+              className="bg-inherit"
+              onChange={(event) => setScale(parseFloat(event.target.value))}/>
+            <input
+              type="number" min={1} max={2} step={0.1} value={scale}
+              className="bg-inherit w-14"
+              onChange={(event) => setScale(parseFloat(event.target.value))}/>
+          </div>
+          <div className={`flex gap-2`}>
+            <code className={`w-14`}>
+              Rotate:
+            </code>
+            <input
+              type="range" min={0} max={360} step={10} value={rotate}
+              className="bg-inherit"
+              onChange={(event) => setRotate(parseFloat(event.target.value))}/>
+            <input
+              type="number" min={0} max={360} step={10} value={rotate}
+              className="bg-inherit w-14"
+              onChange={(event) => setRotate(parseFloat(event.target.value))}/>
+          </div>
+          <div className={`flex gap-2`}>
+            <code className={`w-14`}>
+              Border Radius:
+            </code>
+            <input
+              type="range" min={0} max={50} step={1} value={borderRadius}
+              className="bg-inherit"
+              onChange={(event) => setBorderRadius(parseFloat(event.target.value))}/>
+            <input
+              type="number" min={0} max={50} step={1} value={borderRadius}
+              className="bg-inherit w-14"
+              onChange={(event) => setBorderRadius(parseFloat(event.target.value))}/>
+          </div>
+        </div>
+      </motion.div>
+    </>
+  )
+}
+
 export default function HomePage() {
   const [dark, setDark] = useState(false);
 
@@ -236,7 +380,7 @@ export default function HomePage() {
   }, [dark]);
 
   return(
-    <div className={`w-full flex justify-center dark:bg-slate-900 dark:text-slate-300 transition-all`}>
+    <div className={`w-full flex justify-center dark:bg-slate-900 dark:text-slate-300 transition-all duration-300`}>
       <div className={`grid grid-cols-1 sm:grid-cols-2  p-2 gap-4 max-w-3xl`}>
         <Menu dark={dark} toggleDark={() => setDark(!dark)}/>
         <BasicInfo />
@@ -244,6 +388,8 @@ export default function HomePage() {
         <Experience />
         <SlideShow />
         <ScrollSlide />
+        <ShapePlayGround />
+        <Footer />
         <div className={`h-20`}>
         </div>
       </div>
