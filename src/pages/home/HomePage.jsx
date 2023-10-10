@@ -270,8 +270,8 @@ function ShapePlayGround() {
                     bounce: 0.5,
                     duration: 0.8,
                   }}
-        className={`flex relative justify-center items-center sm:max-w-sm max-h-sm w-full h-64 bg-purple-600 dark:bg-indigo-600 rounded-xl border-slate-400`}>
-
+                  className={`flex relative justify-center items-center sm:max-w-sm max-h-sm w-full h-64 bg-purple-600 dark:bg-indigo-600 rounded-xl border-slate-400`}
+      >
         <motion.div
           className="absolute bg-white dark:bg-slate-900 opacity-20 w-[150px] h-[150px] rounded-xl"
         />
@@ -286,6 +286,9 @@ function ShapePlayGround() {
             }} />
           </div>
           <label>Animation</label>
+        </div>
+        <div className={`absolute top-2 right-2`}>
+          Drag the Shape
         </div>
         <motion.div
           drag
@@ -393,12 +396,6 @@ function Pinning() {
     [0,1],
     ["100px", width < 400 ? `-1500px` :`-2200px`]
   )
-  // 370:250
-  // 426:200
-  // 540:150
-  // 700:100
-
-
 
   function ImageItem({src}) {
     return(
