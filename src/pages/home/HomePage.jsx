@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {motion, useScroll} from "framer-motion"
+import React, {useEffect, useRef, useState} from 'react';
+import {motion, useScroll, useTransform} from "framer-motion"
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faGithubAlt, faLinkedinIn, faReact} from "@fortawesome/free-brands-svg-icons";
 import {Link} from "react-router-dom";
@@ -270,8 +270,8 @@ function ShapePlayGround() {
                     bounce: 0.5,
                     duration: 0.8,
                   }}
-        className={`flex relative justify-center items-center sm:max-w-sm max-h-sm w-full h-64 bg-purple-600 dark:bg-indigo-600 rounded-xl border-slate-400`}>
-
+                  className={`flex relative justify-center items-center sm:max-w-sm max-h-sm w-full h-64 bg-purple-600 dark:bg-indigo-600 rounded-xl border-slate-400`}
+      >
         <motion.div
           className="absolute bg-white dark:bg-slate-900 opacity-20 w-[150px] h-[150px] rounded-xl"
         />
@@ -286,6 +286,9 @@ function ShapePlayGround() {
             }} />
           </div>
           <label>Animation</label>
+        </div>
+        <div className={`absolute top-2 right-2`}>
+          Drag the Shape
         </div>
         <motion.div
           drag
@@ -367,12 +370,75 @@ function ShapePlayGround() {
   )
 }
 
+// function PopUpCard({border = true, span = false, children}) {
+//   return(
+//     <motion.div initial={{ translate: `0% 100%` }} whileInView={{ translate: `0% 0%` }} viewport={{ once: true }}
+//                 transition={{
+//                   type: "spring",
+//                   bounce: 0.5,
+//                   duration: 0.8,
+//                 }}
+//                 className={`${border ? `border` : ``} ${span ? `col-span-2` : ``} rounded-xl p-2 border-slate-400`}
+//     >
+//       {children}
+//     </motion.div>
+//   )
+// }
+
+function Pinning() {
+  const { innerWidth: width } = window;
+  const ref = useRef(null)
+  const { scrollYProgress } = useScroll({
+    target: ref
+  })
+  const scrollUl = useTransform(
+    scrollYProgress,
+    [0,1],
+    ["100px", width < 400 ? `-1500px` :`-2200px`]
+  )
+
+  function ImageItem({src}) {
+    return(
+      <li className={`shrink-0`}>
+        <img src={src} alt="img" className={`sm:w-[400px] sm:h-[400px] w-[300px] h-[300px] object-cover`}/>
+      </li>
+    )
+  }
+
+  return(
+    <div className={`relative h-[800vh] sm:col-span-2`} ref={ref}>
+      <motion.div
+        className={`sticky border flex justify-center items-center gap-2 top-10 overflow-x-hidden`}
+      >
+        <motion.div
+          className={`h-[80vh] origin-center`}
+          style={{ translateX: scrollUl }}
+          transition={{
+            type: "spring",
+            bounce: 0.5,
+            duration: 0.8,
+          }}
+        >
+          <ul className={`flex h-full items-center gap-2`}>
+            <ImageItem src={`https://miro.medium.com/v2/resize:fit:1200/0*FfyVX4HJnf9ZkHiS`}/>
+            <ImageItem src={`https://images.unsplash.com/photo-1592937889900-3336e429f253?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2luZW1hdGljJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww&w=1000&q=80`}/>
+            <ImageItem src={`https://phlearn.com/wp-content/uploads/2018/03/How-to-Create-a-Cinematic-Look-in-Photoshop-After.jpg`}/>
+            <ImageItem src={`https://miro.medium.com/v2/resize:fit:1200/0*FfyVX4HJnf9ZkHiS`}/>
+            <ImageItem src={`https://images.unsplash.com/photo-1592937889900-3336e429f253?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8Y2luZW1hdGljJTIwd2FsbHBhcGVyfGVufDB8fDB8fHww&w=1000&q=80`}/>
+            <ImageItem src={`https://phlearn.com/wp-content/uploads/2018/03/How-to-Create-a-Cinematic-Look-in-Photoshop-After.jpg`}/>
+          </ul>
+        </motion.div>
+      </motion.div>
+    </div>
+  )
+}
+
 export default function HomePage() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-// On page load or when changing themes, best to add inline in `head` to avoid FOUC
-    if (dark && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+    if (dark) {
       document.documentElement.classList.add('dark')
     } else {
       document.documentElement.classList.remove('dark')
@@ -389,6 +455,7 @@ export default function HomePage() {
         <SlideShow />
         <ScrollSlide />
         <ShapePlayGround />
+        <Pinning />
         <Footer />
         <div className={`h-20`}>
         </div>
